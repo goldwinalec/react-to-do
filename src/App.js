@@ -1,11 +1,11 @@
 import './App.css';
-import TaskItem from './components/TaskItem';
+import Tasks from './components/Tasks';
 
 function App() {
   return (
     <div className='App'>
-      <h1 className='App__title'>Список дел</h1>
-      <TaskItem></TaskItem>
+      <h1 className='App__title'>To-do list</h1>
+      <Tasks />
     </div>
   );
 }
