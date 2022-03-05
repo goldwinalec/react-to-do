@@ -1,7 +1,7 @@
 import TaskItem from './TaskItem';
 import './Tasks.css';
 
-function Tasks() {
+const Tasks = () => {
   const tasks = [
     {
       title: 'Do the chores',
@@ -16,6 +16,6 @@ function Tasks() {
       <TaskItem title={tasks[2].title} />
     </div>
   );
-}
+};
 
 export default Tasks;

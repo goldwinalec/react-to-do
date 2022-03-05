@@ -1,13 +1,13 @@
 import './App.css';
-import Tasks from './components/Tasks';
+import Tasks from './components/Tasks/Tasks';
 
-function App() {
+const App = () => {
   return (
     <div className='App'>
       <h1 className='App__title'>To-do list</h1>
       <Tasks />
     </div>
   );
-}
+};
 
 export default App;
