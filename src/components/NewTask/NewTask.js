@@ -1,12 +1,18 @@
 import './NewTask.css';
+import TaskForm from './TaskForm';
 
-const NewTask = () => {
+const NewTask = (props) => {
+  const saveTaskDataHandler = (enteredTaskData) => {
+    const id = Math.floor(Date.now() / 1000);
+    const taskData = {
+      ...enteredTaskData,
+      id: id,
+    };
+    props.onAddTaskData(taskData);
+  };
   return (
-    <div>
-      <form>
-        <input type='text' />
-        <button>OK</button>
-      </form>
+    <div className='task'>
+      <TaskForm onSaveTaskData={saveTaskDataHandler} />
     </div>
   );
 };
