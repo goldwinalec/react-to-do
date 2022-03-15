@@ -14,6 +14,7 @@ const TaskForm = (props) => {
       title: enteredTask,
     };
     props.onSaveTaskData(taskData);
+    props.onCancel();
     setEnteredTask('');
   };
   return (
@@ -27,6 +28,9 @@ const TaskForm = (props) => {
         maxLength='25'
         onChange={taskChangeHandler}
       />
+      <button className='task__btn' type='button' onClick={props.onCancel}>
+        &#10006;
+      </button>
       <button className='task__btn' type='submit'>
         OK
       </button>

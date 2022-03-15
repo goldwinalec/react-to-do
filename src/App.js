@@ -14,13 +14,13 @@ const DUMMY_TASKS = [
 const App = () => {
   const [tasks, setTasks] = useState(DUMMY_TASKS);
   const addTaskHandler = (task) => {
-    setTasks((prevTasks) => [task, ...prevTasks]);
+    setTasks((prevTasks) => [...prevTasks, task]);
   };
   return (
     <div className='App'>
       <h1 className='App__title'>To-do list</h1>
-      <NewTask onAddTaskData={addTaskHandler} />
       <Tasks items={tasks} />
+      <NewTask onAddTaskData={addTaskHandler} />
     </div>
   );
 };

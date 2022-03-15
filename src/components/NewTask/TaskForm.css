@@ -35,10 +35,11 @@
   color: rgba(253, 232, 233, 0.5);
 }
 .task__btn {
-  background-color: transparent;
+  background: transparent;
   border: none;
   outline: transparent;
   color: #fde8e9;
   font-size: 16px;
+  line-height: 1;
   cursor: pointer;
 }

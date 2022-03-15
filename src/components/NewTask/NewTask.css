@@ -1,1 +1,26 @@
-/*  */
+.task__btn-add {
+  width: 45px;
+  height: 45px;
+  margin-top: 16px;
+  text-align: center;
+  background: #464f51;
+  color: #fde8e9;
+  font-size: 30px;
+  line-height: 1;
+  border: none;
+  outline: transparent;
+  border-radius: 7px;
+  -webkit-border-radius: 7px;
+  -moz-border-radius: 7px;
+  -ms-border-radius: 7px;
+  -o-border-radius: 7px;
+  transition: background 0.1s ease;
+  -webkit-transition: background 0.1s ease;
+  -moz-transition: background 0.1s ease;
+  -ms-transition: background 0.1s ease;
+  -o-transition: background 0.1s ease;
+  cursor: pointer;
+}
+.task__btn-add:hover {
+  background: #5e6668;
+}
