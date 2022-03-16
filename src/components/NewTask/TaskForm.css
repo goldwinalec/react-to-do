@@ -19,8 +19,14 @@
   -ms-transition: background 0.1s ease;
   -o-transition: background 0.1s ease;
 }
+.task__form--invalid {
+  background: #51464b;
+}
 .task__form:hover {
   background: #5e6668;
+}
+.task__form--invalid:hover {
+  background: #51464b;
 }
 .task__input {
   width: 100%;

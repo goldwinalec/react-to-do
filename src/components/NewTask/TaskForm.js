@@ -4,7 +4,9 @@ import './TaskForm.css';
 
 const TaskForm = (props) => {
   const [enteredTask, setEnteredTask] = useState('');
+  const [isValid, setIsValid] = useState(true);
   const taskChangeHandler = (evt) => {
+    if (evt.target.value.trim().length > 0) setIsValid(true);
     setEnteredTask(evt.target.value);
   };
   const submitHandler = (evt) => {
@@ -13,12 +15,18 @@ const TaskForm = (props) => {
     const taskData = {
       title: enteredTask,
     };
+    if (enteredTask.trim().length === 0) {
+      setIsValid(false);
+      return;
+    }
     props.onSaveTaskData(taskData);
     props.onCancel();
     setEnteredTask('');
   };
   return (
-    <form className='task__form' onSubmit={submitHandler}>
+    <form
+      className={`task__form ${!isValid ? 'task__form--invalid' : ''}`}
+      onSubmit={submitHandler}>
       <input
         className='task__input'
         type='text'

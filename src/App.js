@@ -3,16 +3,15 @@ import './App.css';
 import NewTask from './components/NewTask/NewTask';
 import Tasks from './components/Tasks/Tasks';
 
-const DUMMY_TASKS = [
-  {
-    title: 'Do the chores',
-    id: 1,
-  },
-  { title: 'Laundry', id: 2 },
-  { title: 'Pay the bills', id: 3 },
-];
 const App = () => {
-  const [tasks, setTasks] = useState(DUMMY_TASKS);
+  const [tasks, setTasks] = useState([
+    {
+      title: 'Do the chores',
+      id: 1,
+    },
+    { title: 'Laundry', id: 2 },
+    { title: 'Pay the bills', id: 3 },
+  ]);
   const addTaskHandler = (task) => {
     setTasks((prevTasks) => [...prevTasks, task]);
   };
