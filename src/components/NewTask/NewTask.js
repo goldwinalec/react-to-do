@@ -1,6 +1,7 @@
-import React, { useState } from 'react';
-import './NewTask.css';
+import React, { useState, useEffect } from 'react';
+import classes from './NewTask.module.css';
 import TaskForm from './TaskForm';
+import addIcon from '../../assets/images/icons/add-icon.svg';
 
 const NewTask = (props) => {
   const [isEditing, setIsEditing] = useState(false);
@@ -19,10 +20,10 @@ const NewTask = (props) => {
     setIsEditing(false);
   };
   return (
-    <div className='task'>
+    <div className={classes.task}>
       {!isEditing && (
-        <button className='task__btn-add' onClick={onEditingHandler}>
-          &#43;
+        <button className={classes['task__btn-add']} onClick={onEditingHandler}>
+          <img src={addIcon} alt='Add task' />
         </button>
       )}
       {isEditing && (

@@ -1,10 +1,15 @@
-.tasks__item {
-  width: 100%;
+.task__btn-add {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 45px;
   height: 45px;
-  margin-top: 12px;
-  padding: 13px;
+  margin-top: 16px;
+  text-align: center;
   background: #464f51;
-  line-height: 1;
+  color: #fde8e9;
+  border: none;
+  outline: transparent;
   border-radius: 7px;
   -webkit-border-radius: 7px;
   -moz-border-radius: 7px;
@@ -15,7 +20,8 @@
   -moz-transition: background 0.1s ease;
   -ms-transition: background 0.1s ease;
   -o-transition: background 0.1s ease;
+  cursor: pointer;
 }
-.tasks__item:hover {
+.task__btn-add:hover {
   background: #5e6668;
 }

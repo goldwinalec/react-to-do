@@ -1,11 +1,16 @@
 import TaskItem from './TaskItem';
-import './Tasks.css';
+import classes from './Tasks.module.css';
 
 const Tasks = (props) => {
   return (
-    <div className='tasks'>
+    <div className={classes.tasks}>
       {props.items.map((task) => (
-        <TaskItem title={task.title} key={task.id} />
+        <TaskItem
+          title={task.title}
+          key={task.id}
+          id={task.id}
+          onDelete={props.onDeleteItem}
+        />
       ))}
     </div>
   );

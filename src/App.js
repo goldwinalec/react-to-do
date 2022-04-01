@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import './App.css';
+import classes from './App.module.css';
 import NewTask from './components/NewTask/NewTask';
 import Tasks from './components/Tasks/Tasks';
 
@@ -15,10 +15,19 @@ const App = () => {
   const addTaskHandler = (task) => {
     setTasks((prevTasks) => [...prevTasks, task]);
   };
+  const deleteTaskHandler = (taskId) => {
+    setTasks((prevTasks) => {
+      return prevTasks.filter((task) => task.id !== taskId);
+    });
+  };
+  let content = <p>No tasks found.</p>;
+  if (tasks.length > 0) {
+    content = <Tasks items={tasks} onDeleteItem={deleteTaskHandler} />;
+  }
   return (
-    <div className='App'>
-      <h1 className='App__title'>To-do list</h1>
-      <Tasks items={tasks} />
+    <div className={classes.app}>
+      <h1 className={classes.app__title}>To-do list</h1>
+      {content}
       <NewTask onAddTaskData={addTaskHandler} />
     </div>
   );
