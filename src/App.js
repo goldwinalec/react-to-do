@@ -12,6 +12,7 @@ const App = () => {
     { title: 'Laundry', id: 2 },
     { title: 'Pay the bills', id: 3 },
   ]);
+
   const addTaskHandler = (task) => {
     setTasks((prevTasks) => [...prevTasks, task]);
   };

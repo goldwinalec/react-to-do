@@ -15,15 +15,12 @@ const TaskForm = (props) => {
   const submitHandler = (evt) => {
     evt.preventDefault();
 
-    const taskData = {
-      title: enteredTask,
-    };
     if (enteredTask.trim().length === 0) {
       setIsValid(false);
       inputRef.current.focus();
       return;
     }
-    props.onSaveTaskData(taskData);
+    props.onSaveTaskData(enteredTask);
     props.onCancel();
     setEnteredTask('');
   };
