@@ -2,62 +2,32 @@ import React, { useState, useEffect } from 'react';
 import classes from './App.module.css';
 import NewTask from './components/NewTask/NewTask';
 import Tasks from './components/Tasks/Tasks';
-// import useFetch from './hooks/use-fetch';
+import useFetch from './hooks/use-fetch';
 
 const App = () => {
-  // const [tasks, setTasks] = useState([]);
-  // const { error, sendRequest: fetchTasks } = useFetch();
-
-  // useEffect(() => {
-  //   const transformTasks = (taskObj) => {
-  //     const loadedTasks = [];
-
-  //     for (const taskKey in taskObj) {
-  //       loadedTasks.push({ id: taskKey, title: taskObj[taskKey].title });
-  //     }
-
-  //     setTasks(loadedTasks);
-  //   };
-
-  //   fetchTasks(
-  //     ({
-  //       url: 'https://react-http-a9de5-default-rtdb.europe-west1.firebasedatabase.app/tasks.json',
-  //     },
-  //     transformTasks)
-  //   );
-  // }, [fetchTasks]);
-
-  const [error, setError] = useState(null);
   const [tasks, setTasks] = useState([]);
-
-  const fetchTasks = async () => {
-    setError(null);
-    try {
-      const response = await fetch(
-        'https://react-http-a9de5-default-rtdb.europe-west1.firebasedatabase.app/tasks.json'
-      );
-
-      if (!response.ok) {
-        throw new Error('Request failed!');
-      }
-
-      const data = await response.json();
-
-      const loadedTasks = [];
-
-      for (const taskKey in data) {
-        loadedTasks.push({ id: taskKey, title: data[taskKey].title });
-      }
-
-      setTasks(loadedTasks);
-    } catch (err) {
-      setError(err.message || 'Something went wrong!');
-    }
-  };
+  const { error, sendRequest: fetchTasks, isLoading } = useFetch();
 
   useEffect(() => {
-    fetchTasks();
-  }, []);
+    const transformTasks = (taskObj) => {
+      const loadedTasks = [];
+
+      for (const taskKey in taskObj) {
+        loadedTasks.push({
+          id: taskKey,
+          title: taskObj[taskKey].title,
+          done: taskObj[taskKey].done,
+        });
+      }
+      setTasks(loadedTasks);
+    };
+    fetchTasks(
+      {
+        url: 'https://todo-cae95-default-rtdb.europe-west1.firebasedatabase.app/tasks.json',
+      },
+      transformTasks
+    );
+  }, [fetchTasks]);
 
   const addTaskHandler = (task) => {
     setTasks((prevTasks) => [...prevTasks, task]);
@@ -67,16 +37,39 @@ const App = () => {
       return prevTasks.filter((task) => task.id !== taskId);
     });
   };
+  const toggleTaskHandler = async (task) => {
+    const updateTasks = () => {
+      setTasks((prevTasks) => {
+        return prevTasks.map(
+          (prevTask) => prevTask.id === task.id && (prevTask.done = true)
+        );
+      });
+    };
+    fetchTasks(
+      {
+        url: `https://todo-cae95-default-rtdb.europe-west1.firebasedatabase.app/tasks/${task.id}}`,
+        method: 'PATCH',
+        body: JSON.stringify(task),
+        headers: {
+          'Content-Type': 'application/json',
+        },
+      },
+      updateTasks
+    );
+  };
   let content = <p>No tasks found.</p>;
   if (tasks.length > 0) {
     content = (
       <Tasks
         items={tasks}
         onDeleteItem={deleteTaskHandler}
+        onToggle={toggleTaskHandler}
         error={error}
         onFetch={fetchTasks}
       />
     );
+  } else if (tasks.length === 0 && isLoading) {
+    content = <p>Loading...</p>;
   }
   return (
     <div className={classes.app}>

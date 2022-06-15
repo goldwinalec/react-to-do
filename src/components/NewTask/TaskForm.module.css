@@ -54,3 +54,6 @@
   line-height: 1;
   cursor: pointer;
 }
+.task__text-error {
+  color: #DA3E52;
+}

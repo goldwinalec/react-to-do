@@ -25,32 +25,37 @@ const TaskForm = (props) => {
     setEnteredTask('');
   };
   return (
-    <form
-      className={`${classes.task__form} ${
-        !isValid ? classes['task__form--invalid'] : ''
-      }`}
-      onSubmit={submitHandler}>
-      <input
-        className={classes.task__input}
-        type='text'
-        placeholder='Write here'
-        value={enteredTask}
-        minLength='1'
-        maxLength='25'
-        onChange={taskChangeHandler}
-        ref={inputRef}
-        autoFocus
-      />
-      <button
-        className={classes.task__btn}
-        type='button'
-        onClick={props.onCancel}>
-        <img src={cancelIcon} alt='Cancel' />
-      </button>
-      <button className={classes.task__btn} type='submit'>
-        <img src={submitIcon} alt='Submit' />
-      </button>
-    </form>
+    <React.Fragment>
+      <form
+        className={`${classes.task__form} ${
+          !isValid ? classes['task__form--invalid'] : ''
+        }`}
+        onSubmit={submitHandler}>
+        <input
+          className={classes.task__input}
+          type='text'
+          placeholder='Write here'
+          value={enteredTask}
+          minLength='1'
+          maxLength='25'
+          onChange={taskChangeHandler}
+          ref={inputRef}
+          autoFocus
+        />
+        <button
+          className={classes.task__btn}
+          type='button'
+          onClick={props.onCancel}>
+          <img src={cancelIcon} alt='Cancel' />
+        </button>
+        <button className={classes.task__btn} type='submit'>
+          <img src={submitIcon} alt='Submit' />
+        </button>
+      </form>
+      {!isValid && (
+        <p className={classes['task__text-error']}>Task must not be empty.</p>
+      )}
+    </React.Fragment>
   );
 };
 

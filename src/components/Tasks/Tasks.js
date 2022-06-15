@@ -6,10 +6,13 @@ const Tasks = (props) => {
     <div className={classes.tasks}>
       {props.items.map((task) => (
         <TaskItem
+          task={task}
           title={task.title}
           key={task.id}
           id={task.id}
+          isDone={task.done}
           onDelete={props.onDeleteItem}
+          onToggle={props.onToggle}
         />
       ))}
     </div>
