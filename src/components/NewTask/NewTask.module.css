@@ -6,7 +6,7 @@
   height: 45px;
   margin-top: 16px;
   text-align: center;
-  background: #464f51;
+  background: #373a4e;
   color: #fde8e9;
   border: none;
   outline: transparent;
@@ -23,5 +23,5 @@
   cursor: pointer;
 }
 .task__btn-add:hover {
-  background: #5e6668;
+  background: #494c5c;
 }
