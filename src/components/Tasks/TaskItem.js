@@ -11,8 +11,8 @@ const TaskItem = (props) => {
   };
   return (
     <div
-      className={`${classes.tasks__item}${
-        props.done ? classes['tasks__item--done'] : ''
+      className={`${classes.tasks__item} ${
+        props.task.done ? classes['tasks__item--done'] : ''
       }`}>
       {props.title}
       <button className={classes.tasks__btn} onClick={deleteHandler}>

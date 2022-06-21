@@ -33,24 +33,38 @@ const App = () => {
     setTasks((prevTasks) => [...prevTasks, task]);
   };
   const deleteTaskHandler = (taskId) => {
-    setTasks((prevTasks) => {
+    const updateTasks = setTasks((prevTasks) => {
       return prevTasks.filter((task) => task.id !== taskId);
     });
+    const url = `https://todo-cae95-default-rtdb.europe-west1.firebasedatabase.app/tasks/${taskId}.json`;
+    fetchTasks(
+      {
+        url: url,
+        method: 'DELETE',
+      },
+      updateTasks
+    );
   };
   const toggleTaskHandler = async (task) => {
     const updateTasks = () => {
       setTasks((prevTasks) => {
-        return prevTasks.map(
-          (prevTask) => prevTask.id === task.id && (prevTask.done = true)
-        );
+        return prevTasks.map((prevTask) => {
+          if (prevTask.id === task.id) {
+            prevTask.done = !prevTask.done;
+          }
+          return prevTask;
+        });
       });
     };
     fetchTasks(
       {
-        url: `https://todo-cae95-default-rtdb.europe-west1.firebasedatabase.app/tasks/${task.id}}`,
+        url: `https://todo-cae95-default-rtdb.europe-west1.firebasedatabase.app/tasks/${task.id}.json`,
         method: 'PATCH',
-        body: JSON.stringify(task),
+        body: {
+          done: !task.done,
+        },
         headers: {
+          Accept: 'application/json',
           'Content-Type': 'application/json',
         },
       },

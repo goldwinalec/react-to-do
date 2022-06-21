@@ -10,7 +10,6 @@ const Tasks = (props) => {
           title={task.title}
           key={task.id}
           id={task.id}
-          isDone={task.done}
           onDelete={props.onDeleteItem}
           onToggle={props.onToggle}
         />

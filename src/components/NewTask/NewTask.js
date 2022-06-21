@@ -19,7 +19,7 @@ const NewTask = (props) => {
       {
         url: 'https://todo-cae95-default-rtdb.europe-west1.firebasedatabase.app/tasks.json',
         method: 'POST',
-        body: { title: taskText },
+        body: { title: taskText, done: false },
         headers: { 'Content-Type': 'application/json' },
       },
       createTask.bind(null, taskText)
