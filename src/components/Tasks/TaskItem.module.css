@@ -41,6 +41,9 @@
   text-decoration: line-through;
   color: #96e6b3;
 }
+.tasks__item:hover {
+  background: #494c5c;
+}
 .tasks__btn {
   width: 20px;
   height: 20px;
@@ -49,7 +52,7 @@
   background: transparent;
   outline: transparent;
   border: none;
-  opacity: 0.3;
+  opacity: 0;
   transition: opacity 0.1s ease;
   -webkit-transition: opacity 0.1s ease;
   -moz-transition: opacity 0.1s ease;
@@ -62,20 +65,26 @@
   width: 20px;
   height: 20px;
 }
+.tasks__item:hover .tasks__btn {
+  opacity: 1;
+}
 @media only screen and (min-device-width: 1024px) and (max-device-width: 1366px) and (-webkit-min-device-pixel-ratio: 2) {
   .tasks__btn {
-    opacity: 0;
+    opacity: 0.3;
   }
-  .tasks__item:hover {
-    background: #494c5c;
-  }
-  .tasks__item:hover .tasks__btn {
+  .tasks__btn:active {
     opacity: 1;
   }
 }
 .tasks__btn:first-child {
   margin-left: auto;
 }
-.tasks__btn:active {
-  opacity: 1;
+
+@media (max-width: 1023px) {
+  .tasks__btn {
+    opacity: 0.3;
+  }
+  .tasks__btn:active {
+    opacity: 1;
+  }
 }
