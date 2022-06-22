@@ -5,16 +5,11 @@
   width: 100%;
   height: 45px;
   padding: 14px;
-  /* border-radius: 7px;
-  -webkit-border-radius: 7px;
-  -moz-border-radius: 7px;
-  -ms-border-radius: 7px;
-  -o-border-radius: 7px; */
-  transition: background 0.1s ease;
-  -webkit-transition: background 0.1s ease;
-  -moz-transition: background 0.1s ease;
-  -ms-transition: background 0.1s ease;
-  -o-transition: background 0.1s ease;
+  transition: all 0.1s ease;
+  -webkit-transition: all 0.1s ease;
+  -moz-transition: all 0.1s ease;
+  -ms-transition: all 0.1s ease;
+  -o-transition: all 0.1s ease;
 }
 .tasks__item:first-child {
   border-radius: 7px 7px 0 0;
@@ -42,9 +37,6 @@
   height: 1px;
   background-color: #575965;
 }
-.tasks__item:hover {
-  background: #494c5c;
-}
 .tasks__item--done {
   text-decoration: line-through;
   color: #96e6b3;
@@ -57,7 +49,7 @@
   background: transparent;
   outline: transparent;
   border: none;
-  opacity: 0;
+  opacity: 0.3;
   transition: opacity 0.1s ease;
   -webkit-transition: opacity 0.1s ease;
   -moz-transition: opacity 0.1s ease;
@@ -70,9 +62,20 @@
   width: 20px;
   height: 20px;
 }
+@media only screen and (min-device-width: 1024px) and (max-device-width: 1366px) and (-webkit-min-device-pixel-ratio: 2) {
+  .tasks__btn {
+    opacity: 0;
+  }
+  .tasks__item:hover {
+    background: #494c5c;
+  }
+  .tasks__item:hover .tasks__btn {
+    opacity: 1;
+  }
+}
 .tasks__btn:first-child {
   margin-left: auto;
 }
-.tasks__item:hover .tasks__btn {
+.tasks__btn:active {
   opacity: 1;
 }

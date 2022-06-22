@@ -1,28 +1,5 @@
-.translate-enter {
-  opacity: 0;
-}
-.translate-enter-active {
-  opacity: 1;
-  transition: opacity 0.3s ease;
-  -webkit-transition: opacity 0.3s ease;
-  -moz-transition: opacity 0.3s ease;
-  -ms-transition: opacity 0.3s ease;
-  -o-transition: opacity 0.3s ease;
-}
-.translate-exit {
-  opacity: 1;
-}
-.translate-exit-active {
-  opacity: 0;
-  transition: opacity 0.3s ease;
-  -webkit-transition: opacity 0.3s ease;
-  -moz-transition: opacity 0.3s ease;
-  -ms-transition: opacity 0.3s ease;
-  -o-transition: opacity 0.3s ease;
-}
 .tasks {
   margin-top: 12px;
-  /* padding: 13px; */
   background: #373a4e;
   border-radius: 7px;
   -webkit-border-radius: 7px;
